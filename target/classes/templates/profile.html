@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User Details</title>
+    <style>
+        .card-custom {
+            background-color: antiquewhite;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 100%;
+            margin: 20px auto;
+            font-family: Arial, sans-serif;
+        }
+
+        .card-custom h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .card-custom table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .card-custom th, .card-custom td {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .card-custom th {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="card-custom">
+        <h1>Registered User Details</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Role</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td th:text="${student.id}"></td>
+                    <td th:text="${student.username}"></td>
+                    <td th:text="${student.roles}"></td> <!-- Changed from 'role' to 'roles' -->
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

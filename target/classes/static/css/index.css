@@ -1,0 +1,253 @@
+/* Basic Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: antiquewhite;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Hide nav links by default on small screens */
+.nav-links {
+    list-style: none;
+    display: flex;
+    padding-left: 0;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: black;
+    font-weight: 550;
+}
+
+.nav-links a:hover {
+    color: #f57c00;
+}
+
+/* Main Content Styles */
+		.main-content {
+
+			text-align: center;
+			text-wrap: pretty;
+			margin-top: 15px;
+			margin-left: 10px;
+			margin-right: 10px;
+			padding: 110px 10px;
+			background: url('/images/kids1.jpg') no-repeat ;
+			background-size: cover;
+			color: #fff;
+			position: relative;
+			min-height: 60vh;
+		}
+
+/* Overlay to darken the background for better text visibility */
+.main-content::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+.main-content h1,
+.main-content p,
+.buttons {
+    position: relative;
+    z-index: 2;
+}
+
+.main-content h1 {
+    font-size: 36px;
+}
+
+.main-content p {
+    font-size: 18px;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+/* Button Styles */
+.buttons {
+    margin-top: 30px;
+}
+
+.buttons button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    color: wheat;
+}
+
+.read-more {
+    background-color: #f57c00;
+}
+
+.join-now {
+    background-color: orange;
+}
+
+/* Menu Toggle Button for Mobile */
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    /* Show menu toggle button on small screens */
+    .menu-toggle {
+        display: block;
+    }
+
+    /* Hide nav links by default on small screens */
+    .nav-links {
+        flex-direction: column;
+        display: none;
+        background-color: #fff;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+    }
+
+    /* Show nav links when active class is added */
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    .navbar {
+        flex-direction: row;
+    }
+
+    /* Main content adjustments for mobile */
+    .main-content {
+        padding: 100px 20px;
+    }
+
+    .main-content h1 {
+        font-size: 28px;
+    }
+
+    .main-content p {
+        font-size: 16px;
+    }
+}
+ /* Card Styling */
+.card-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.card {
+    display: flex;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 30%;
+    height: 30%;
+    margin: 10px;
+    overflow: hidden;
+}
+
+/* Card Image Styling */
+.card-image {
+    flex: 0 0 40%;
+    background: url('/images/java.jpeg') no-repeat ;
+    background-size: cover;
+}
+
+/* Card Body Styling */
+.card-body {
+    flex: 1;
+    padding: 20px;
+    text-align: left;
+}
+/* Blinking Animation */
+@keyframes blinking {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Apply Blinking Animation to Title and Text */
+.card-title {
+    animation: blinking 2s infinite;
+    color: #e05d00;
+}
+
+.card-text {
+    animation: blinking 7s infinite;
+    color:cadetblue;
+}
+
+/* Button Styling */
+.btn-primary {
+    background-color: #f57c00;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #e05d00;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .card {
+        width: 45%;
+        flex-direction: column;
+    }
+
+    .card-image {
+        width: 100%;
+        height: 200px;
+    }
+}
+
+@media (max-width: 576px) {
+    .card {
+        width: 90%;
+    }
+}
