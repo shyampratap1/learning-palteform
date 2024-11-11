@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create Exam</title>
+</head>
+<body>
+    <h1>Create Exam</h1>
+    <form th:action="@{/createExam}" th:object="${exam}" method="post">
+        <label>Title:</label>
+        <input type="text" th:field="*{title}" placeholder="Title" required/>
+        <label>Description:</label>
+        <input type="text" th:field="*{description}" placeholder="Description" required/>
+        <button type="submit">Create Exam</button>
+    </form>
+</body>
+</html>

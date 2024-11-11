@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Exam Portal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            margin: 0;
+        }
+        .nav-links {
+            list-style-type: none;
+            padding: 0;
+        }
+        .nav-links li {
+            display: inline;
+            margin-left: 20px;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+        main {
+            padding: 20px;
+            width: 80%;
+            margin: 0 auto;
+        }
+          .foods {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
+        gap: 20px; /* Space between the cards */
+        justify-items: center;
+    }
+        .single-food {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        overflow: hidden;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: #ffffff;
+        transition: transform 0.2s;
+        width: 100%; /* Ensures the cards are equal in width */
+        max-width: 300px; /* Optional: max width to limit card size */
+    }
+        .single-food:hover {
+            transform: scale(1.05);
+        }
+        .food-img img {
+            width: 100%;
+            height: auto;
+        }
+        .food-img h4 {
+            margin: 10px 0;
+        }
+        .single-food a {
+            display: inline-block;
+            margin: 10px 0;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            text-align: center;
+        }
+        .single-food a:hover {
+            background-color: #45a049;
+        }
+      	footer {
+			background-color: mediumseagreen;
+			color: white;
+			padding: 1px 0;
+			text-align: center;
+			position: fixed;
+			bottom: 0;
+			width: 100%;
+
+		}
+		
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column; /* Stack items vertically on smaller screens */
+                align-items: flex-start; /* Align items to the start */
+            }
+            .nav-links li {
+                display: block; /* Display links in a block for better stacking */
+                margin: 5px 0; /* Add margin for spacing */
+            }
+            .foods {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Fewer cards per row */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-links li {
+                margin-left: 10px;
+                 /* Reduce margin for very small screens */
+            }
+            footer {
+                font-size: 0.8em; /* Smaller footer text on small screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="container">
+                <h1 class="logo">Student Exam Portal</h1>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a th:href="@{/exams}">Exams</a></li>
+                    <li><a th:href="@{/index}">Results</a></li>
+                    <li><a th:href="@{/profile}">Profile</a></li>
+                    <li><a th:href="@{/index}">Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section id="exams">
+            <h2>Available Exams</h2>
+            <p>Check out the list of available exams and start preparing!</p>
+        </section>
+        
+        <div class="container" style="display: flex;">
+
+        <div class="container foods">
+            <div class="single-food" th:each="exam : ${exams}">
+                <div class="food-img">
+                    <img th:src="@{/images/default.jpg}" alt="Exam Image">
+                    <h4 th:text="${exam.title}">Exam Title</h4>
+                </div>
+                <a th:href="@{'/questions/' + ${exam.id}}">Get started</a>
+
+            </div>
+        </div>
+         
+         
+        
+
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Student Exam Portal. All rights reserved.</p>
+    </footer>
+</body>
+</html>

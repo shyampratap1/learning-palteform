@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Update Question</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .card {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            background-color: #ffffff;
+        }
+
+        .card h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .card label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .card input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .card button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .card button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>Update Question</h1>
+            <form th:action="@{/updateQuestion}" th:object="${question}" method="post">
+                <input type="hidden" th:field="*{id}" />
+                <input type="hidden" th:name="examId" th:value="${examId}" />
+                <!-- Question fields -->
+                <label>Content:</label>
+                <input type="text" th:field="*{content}" placeholder="Content" required />
+                <label>Option A:</label>
+                <input type="text" th:field="*{optionA}" placeholder="Option A" required />
+                <label>Option B:</label>
+                <input type="text" th:field="*{optionB}" placeholder="Option B" required />
+                <label>Option C:</label>
+                <input type="text" th:field="*{optionC}" placeholder="Option C" required />
+                <label>Option D:</label>
+                <input type="text" th:field="*{optionD}" placeholder="Option D" required />
+                <label>Correct Answer:</label>
+                <input type="text" th:field="*{correctAnswer}" placeholder="Correct Answer" required />
+                <button type="submit">Update Question</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

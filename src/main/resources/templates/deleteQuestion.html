@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Delete Questions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .questions-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .question-content {
+            margin: 0;
+            color: #333;
+        }
+
+        .button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .delete-button {
+            background-color: #dc3545;
+            color: #fff;
+        }
+
+        .delete-button:hover {
+            background-color: #c82333;
+        }
+
+        .update-button {
+            background-color: #007bff;
+            color: #fff;
+            margin-left: 10px;
+        }
+
+        .update-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Delete Questions</h1>
+        <div class="questions-list">
+            <div th:each="question : ${questions}">
+                <div class="card">
+                    <p class="question-content" th:text="${question.content}">Question Content</p>
+                    <div>
+                        <form th:action="@{/deleteQuestion}" th:method="post" style="display:inline;">
+                            <input type="hidden" th:name="questionId" th:value="${question.id}" />
+                            <input type="hidden" th:name="examId" th:value="${exam.id}" />
+                            <button class="button delete-button" type="submit">Delete</button>
+                        </form>
+                        <a th:href="@{/updateQuestion/{questionId}/{examId}(questionId=${question.id}, examId=${exam.id})}" class="button update-button">Update</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
